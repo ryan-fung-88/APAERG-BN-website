@@ -23,6 +23,15 @@
       100%{transform:translateY(-20vh) scale(1.1);opacity:0}
     }
 
+    /* SAKURA PETALS */
+    .petal{position:absolute;opacity:0;animation:sakuraFall linear infinite}
+    .petal svg{display:block}
+    @keyframes sakuraFall{
+      0%{transform:translateY(-5vh) translateX(0) rotate(0deg);opacity:.7}
+      80%{opacity:.5}
+      100%{transform:translateY(110vh) translateX(60px) rotate(540deg);opacity:0}
+    }
+
     /* NAV */
     nav{
       position:sticky;top:0;z-index:100;
@@ -194,6 +203,7 @@
     <div class="hero-tag">🌸 APA ERG &amp; Energy Hub Presents</div>
     <h1 class="hero-title"><span class="accent">Boba Networking</span></h1>
     <p class="hero-sub">Sip, connect, and grow — one rotation at a time 🧋</p>
+    <p class="hero-sub" style="font-size:clamp(.85rem,1.6vw,1.05rem);color:var(--teal-dark);margin-top:-.8rem">✨ Celebrating AAPI Heritage through food, drink &amp; community</p>
     <div class="hero-emojis">🧋 🌺 🍵 🌸 🧋</div>
     <div class="boba-cup-wrap">
       <div class="boba-cup">
@@ -221,7 +231,7 @@
 <!-- BOBA MENU -->
 <section id="boba-menu" class="menu-section">
   <div class="container">
-    <h2 class="section-title">🧋 Boba Menu</h2>
+    <h2 class="section-title">🧋 Boba Menu 🌸</h2>
     <span class="divider"></span>
     <p class="section-subtitle">Pick your perfect boba beverage!</p>
     <div class="cards">
@@ -248,6 +258,7 @@
         </div>
         <h3>Mango Green Tea w/ Lychee Jelly</h3>
         <p>A vibrant drink that blends the crispness of green tea with a refreshing burst of rich mango flavor, served with lychee jellies.</p>
+        <p style="font-size:.78rem;color:var(--teal-dark);margin-top:.6rem;font-weight:600">🇹🇼 Originated in Taiwan</p>
       </div>
 
       <div class="card">
@@ -272,6 +283,7 @@
         </div>
         <h3>Jasmine Green Milk Tea</h3>
         <p>The perfect blend of fragrant jasmine green tea and a house blend milk, creating a smooth and aromatic classic milk tea experience.</p>
+        <p style="font-size:.78rem;color:var(--teal-dark);margin-top:.6rem;font-weight:600">🌿 Rooted in East Asian tea culture</p>
       </div>
 
       <div class="card">
@@ -296,6 +308,7 @@
         </div>
         <h3>Coconut Latte</h3>
         <p>Features a house-made coconut milk blend with lactose-friendly milk and rich cold brew coffee — tropical meets caffeine fix!</p>
+        <p style="font-size:.78rem;color:var(--teal-dark);margin-top:.6rem;font-weight:600">🌴 Inspired by Southeast Asian flavors</p>
       </div>
 
     </div>
@@ -348,7 +361,7 @@
 <!-- HOW IT WORKS -->
 <section id="how">
   <div class="container">
-    <h2 class="section-title">🔄 How It Works</h2>
+    <h2 class="section-title">🏮 How It Works</h2>
     <span class="divider"></span>
     <p class="section-subtitle">Speed networking — boba style!</p>
     <div class="steps">
@@ -410,6 +423,30 @@
       animation-delay:${Math.random()*10}s;
     `;
     container.appendChild(b);
+  }
+
+  // Sakura petals
+  const petalColors = ['#f9c8d9','#f7b8cc','#fde8f0','#f4a7b9'];
+  for (let i = 0; i < 14; i++) {
+    const p = document.createElement('div');
+    p.classList.add('petal');
+    const size = Math.random() * 14 + 8;
+    const color = petalColors[Math.floor(Math.random() * petalColors.length)];
+    p.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(0,10,10)"/>
+      <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(72,10,10)"/>
+      <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(144,10,10)"/>
+      <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(216,10,10)"/>
+      <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(288,10,10)"/>
+      <circle cx="10" cy="10" r="2" fill="#f9e4ee"/>
+    </svg>`;
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      top:-30px;
+      animation-duration:${Math.random()*12+10}s;
+      animation-delay:${Math.random()*15}s;
+    `;
+    container.appendChild(p);
   }
 </script>
 </body>

@@ -76,27 +76,12 @@
     .hero-title .accent{color:var(--teal-dark)}
     .hero-sub{font-size:clamp(1rem,2.2vw,1.35rem);color:#555;margin:1.2rem 0 2.2rem}
     .hero-emojis{font-size:2.4rem;letter-spacing:.4rem;margin-bottom:2rem}
-    .boba-cup-wrap{display:flex;justify-content:center;gap:2.5rem;margin-top:5rem;flex-wrap:wrap}
-    .boba-cup{display:flex;flex-direction:column;align-items:center;animation:bounceCup 3s ease-in-out infinite}
-    .boba-cup:nth-child(2){animation-delay:.6s}
-    .boba-cup:nth-child(3){animation-delay:1.2s}
-    @keyframes bounceCup{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-    .cup-lid{width:70px;height:14px;background:var(--teal);border-radius:6px 6px 0 0;position:relative}
-    .cup-straw{width:6px;height:38px;background:linear-gradient(var(--purple),var(--teal));border-radius:3px;margin-top:-38px;align-self:flex-start;margin-left:28px;position:relative;z-index:3}
-    .cup-body{
-      width:64px;height:88px;
-      background:linear-gradient(160deg,rgba(159,204,200,.55) 0%,rgba(244,167,185,.45) 100%);
-      border:2.5px solid var(--teal-dark);border-top:none;border-radius:4px 4px 16px 16px;
-      position:relative;overflow:hidden;
-    }
-    .cup-body::before{
-      content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);
-      width:48px;height:18px;
-      background:radial-gradient(circle,var(--brown) 4px,transparent 4px) 0 0/12px 12px,
-                 radial-gradient(circle,var(--brown) 4px,transparent 4px) 6px 6px/12px 12px;
-      opacity:.65;
-    }
-    .cup-label{font-family:'Poppins',sans-serif;font-size:.67rem;font-weight:700;color:var(--brown);margin-top:.4rem;text-align:center;max-width:72px}
+    .boba-scene{position:relative;display:flex;justify-content:center;align-items:center;margin-top:4rem;height:340px;perspective:700px}
+    .boba-3d-cup{position:relative;z-index:2;animation:bounceCup 3.2s ease-in-out infinite;filter:drop-shadow(0 24px 40px rgba(90,172,170,.4))}
+    @keyframes bounceCup{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+    .orbit-ring{position:absolute;width:340px;height:340px;transform-style:preserve-3d;animation:spinOrbit 9s linear infinite}
+    @keyframes spinOrbit{to{transform:rotateY(360deg)}}
+    .orbit-ring span{position:absolute;top:50%;left:50%;font-family:'Poppins',sans-serif;font-weight:700;font-size:.82rem;color:var(--teal-dark);transform-style:preserve-3d;white-space:nowrap}
 
     /* MENU CARDS */
     .menu-section{background:#fff}
@@ -208,21 +193,62 @@
     <p class="hero-sub">Sip, connect, and grow — one rotation at a time 🧋</p>
     <p class="hero-sub" style="font-size:clamp(.85rem,1.6vw,1.05rem);color:var(--teal-dark);margin-top:-.8rem">✨ Celebrating AAPI Heritage through food, drink &amp; community</p>
     <div class="hero-emojis">🧋 🌺 🍵 🌸 🧋</div>
-    <div class="boba-cup-wrap">
-      <div class="boba-cup">
-        <div class="cup-straw"></div>
-        <div class="cup-lid"></div>
-        <div class="cup-body"></div>
-      </div>
-      <div class="boba-cup">
-        <div class="cup-straw"></div>
-        <div class="cup-lid" style="background:var(--pink)"></div>
-        <div class="cup-body" style="background:linear-gradient(160deg,rgba(244,167,185,.5),rgba(232,213,183,.5))"></div>
-      </div>
-      <div class="boba-cup">
-        <div class="cup-straw"></div>
-        <div class="cup-lid" style="background:var(--pearl)"></div>
-        <div class="cup-body" style="background:linear-gradient(160deg,rgba(232,213,183,.55),rgba(168,213,162,.4))"></div>
+    <div class="boba-scene">
+      <div class="orbit-ring" id="orbitRing"></div>
+      <div class="boba-3d-cup">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 290" width="200" height="290">
+          <defs>
+            <linearGradient id="strawG" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#A100FF"/>
+              <stop offset="100%" stop-color="#5AACAA"/>
+            </linearGradient>
+            <linearGradient id="lidTopG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c8e8e6"/>
+              <stop offset="100%" stop-color="#5AACAA"/>
+            </linearGradient>
+            <linearGradient id="lidSideG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#9FCCC8"/>
+              <stop offset="100%" stop-color="#3d8a88"/>
+            </linearGradient>
+            <linearGradient id="cupBodyG" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="rgba(159,204,200,.75)"/>
+              <stop offset="45%" stop-color="rgba(244,167,185,.55)"/>
+              <stop offset="100%" stop-color="rgba(168,213,162,.55)"/>
+            </linearGradient>
+            <linearGradient id="liquidG" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="rgba(159,204,200,.7)"/>
+              <stop offset="50%" stop-color="rgba(244,167,185,.6)"/>
+              <stop offset="100%" stop-color="rgba(168,213,162,.6)"/>
+            </linearGradient>
+          </defs>
+          <!-- Straw -->
+          <rect x="122" y="2" width="11" height="88" rx="5" fill="url(#strawG)"/>
+          <!-- Lid top ellipse -->
+          <ellipse cx="100" cy="72" rx="72" ry="18" fill="url(#lidTopG)"/>
+          <!-- Lid side -->
+          <rect x="28" y="66" width="144" height="20" fill="url(#lidSideG)"/>
+          <!-- Lid bottom ellipse -->
+          <ellipse cx="100" cy="86" rx="72" ry="18" fill="#3d8a88"/>
+          <!-- Cup body -->
+          <path d="M33,88 L16,268 Q16,280 30,280 L170,280 Q184,280 184,268 L167,88 Z" fill="url(#cupBodyG)" stroke="#5AACAA" stroke-width="2"/>
+          <!-- Highlight (3D depth) -->
+          <path d="M46,98 L32,264 Q32,272 40,272 L68,272 L84,98 Z" fill="rgba(255,255,255,.17)" rx="4"/>
+          <!-- Liquid -->
+          <path d="M36,136 L20,268 Q20,278 32,278 L168,278 Q180,278 180,268 L164,136 Z" fill="url(#liquidG)" opacity=".55"/>
+          <!-- Pearls row 1 -->
+          <circle cx="70" cy="256" r="13" fill="#4a3728" opacity=".92"/>
+          <circle cx="100" cy="262" r="13" fill="#4a3728" opacity=".92"/>
+          <circle cx="130" cy="256" r="13" fill="#4a3728" opacity=".92"/>
+          <!-- Pearls row 2 -->
+          <circle cx="82" cy="238" r="11" fill="#4a3728" opacity=".75"/>
+          <circle cx="112" cy="238" r="11" fill="#4a3728" opacity=".75"/>
+          <circle cx="56" cy="240" r="10" fill="#4a3728" opacity=".6"/>
+          <circle cx="140" cy="240" r="10" fill="#4a3728" opacity=".6"/>
+          <!-- Condensation drops -->
+          <ellipse cx="52" cy="158" rx="3" ry="5" fill="rgba(255,255,255,.3)"/>
+          <ellipse cx="58" cy="182" rx="2.5" ry="4" fill="rgba(255,255,255,.22)"/>
+          <ellipse cx="48" cy="205" rx="2" ry="3.5" fill="rgba(255,255,255,.18)"/>
+        </svg>
       </div>
     </div>
   </div>
@@ -561,6 +587,31 @@
       animation-delay:${Math.random()*15}s;
     `;
     container.appendChild(p);
+  }
+
+  // Orbit ring text around boba cup
+  const orbitRing = document.getElementById('orbitRing');
+  if (orbitRing) {
+    const orbitLabel = 'APA ERG & Energy Hub  ✦  ';
+    const radius = 140;
+    const circumference = 2 * Math.PI * radius;
+    const avgCharWidth = 8.5;
+    const totalChars = Math.round(circumference / avgCharWidth);
+    const reps = Math.ceil(totalChars / orbitLabel.length);
+    const fullText = (orbitLabel.repeat(reps)).slice(0, totalChars);
+    fullText.split('').forEach((char, i) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      const angle = (i / fullText.length) * 360;
+      span.style.cssText = `
+        position:absolute;top:50%;left:50%;
+        font-family:'Poppins',sans-serif;font-weight:700;font-size:.82rem;
+        color:#5AACAA;letter-spacing:.02em;
+        transform:rotateY(${angle}deg) translateZ(${radius}px) translate(-50%,-50%);
+        transform-style:preserve-3d;
+      `;
+      orbitRing.appendChild(span);
+    });
   }
 </script>
 </body>

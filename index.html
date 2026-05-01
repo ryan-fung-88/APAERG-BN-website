@@ -1,171 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>APA ERG– Boba Speed Networking</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --teal:#9FCCC8;--teal-dark:#5AACAA;--cream:#FFF8F0;
-      --brown:#6B3F26;--pearl:#E8D5B7;--purple:#A100FF;
-      --pink:#F4A7B9;--green:#A8D5A2;--text:#2D2D2D;
-    }
-    html{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>APA ERG– Boba Speed Networking</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--teal:#9FCCC8;--teal-dark:#5AACAA;--cream:#FFF8F0;
+--brown:#6B3F26;--pearl:#E8D5B7;--purple:#A100FF;
+--pink:#F4A7B9;--green:#A8D5A2;--text:#2D2D2D;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
 
-    /* FLOATING BUBBLES */
-    .bubbles-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-    .bubble{position:absolute;border-radius:50%;opacity:.18;animation:floatUp linear infinite}
-    @keyframes floatUp{
-      0%{transform:translateY(110vh) scale(1);opacity:.18}
-      100%{transform:translateY(-20vh) scale(1.1);opacity:0}
-    }
+/* FLOATING BUBBLES */
+.bubbles-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bubble{position:absolute;border-radius:50%;opacity:.18;animation:floatUp linear infinite}
+@keyframes floatUp{
+0%{transform:translateY(110vh) scale(1);opacity:.18}
+100%{transform:translateY(-20vh) scale(1.1);opacity:0}
+}
 
-    /* SAKURA PETALS */
-    .petal{position:absolute;opacity:0;animation:sakuraFall linear infinite}
-    .petal svg{display:block}
-    @keyframes sakuraFall{
-      0%{transform:translateY(-5vh) translateX(0) rotate(0deg);opacity:.7}
-      80%{opacity:.5}
-      100%{transform:translateY(110vh) translateX(60px) rotate(540deg);opacity:0}
-    }
+/* SAKURA PETALS */
+.petal{position:absolute;opacity:0;animation:sakuraFall linear infinite}
+.petal svg{display:block}
+@keyframes sakuraFall{
+0%{transform:translateY(-5vh) translateX(0) rotate(0deg);opacity:.7}
+80%{opacity:.5}
+100%{transform:translateY(110vh) translateX(60px) rotate(540deg);opacity:0}
+}
 
-    /* NAV */
-    nav{
-      position:sticky;top:0;z-index:100;
-      background:rgba(255,248,240,.93);backdrop-filter:blur(10px);
-      border-bottom:2px solid var(--teal);
-      padding:.75rem 2rem;
-      display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
-    }
-    nav .logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.1rem;color:var(--brown)}
-    nav .logo span{color:var(--teal-dark)}
-    nav ul{list-style:none;display:flex;gap:1.4rem;flex-wrap:wrap}
-    nav ul a{text-decoration:none;color:var(--brown);font-size:.87rem;font-weight:500;transition:color .2s}
-    nav ul a:hover{color:var(--purple)}
+/* NAV */
+nav{
+position:sticky;top:0;z-index:100;
+background:rgba(255,248,240,.93);backdrop-filter:blur(10px);
+border-bottom:2px solid var(--teal);
+padding:.75rem 2rem;
+display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
+}
+nav .logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.1rem;color:var(--brown)}
+nav .logo span{color:var(--teal-dark)}
+nav ul{list-style:none;display:flex;gap:1.4rem;flex-wrap:wrap}
+nav ul a{text-decoration:none;color:var(--brown);font-size:.87rem;font-weight:500;transition:color .2s}
+nav ul a:hover{color:var(--purple)}
 
-    /* LAYOUT */
-    .container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
-    section{position:relative;z-index:1;padding:5rem 0}
-    h2.section-title{
-      font-family:'Poppins',sans-serif;font-weight:800;
-      font-size:clamp(1.7rem,3.5vw,2.4rem);
-      text-align:center;margin-bottom:.5rem;color:var(--brown);
-    }
+/* LAYOUT */
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+section{position:relative;z-index:1;padding:5rem 0}
+h2.section-title{
+font-family:'Poppins',sans-serif;font-weight:800;
+font-size:clamp(1.7rem,3.5vw,2.4rem);
+text-align:center;margin-bottom:.5rem;color:var(--brown);
+}
+    .section-subtitle{text-align:center;color:#777;margin-bottom:3rem;font-size:.95rem;letter-spacing:.03em}
     .section-subtitle{text-align:center;color:#777;margin-top:1.2rem;margin-bottom:3rem;font-size:.95rem;letter-spacing:.03em}
-    .divider{display:block;width:60px;height:4px;background:linear-gradient(90deg,var(--teal),var(--purple));border-radius:2px;margin:.6rem auto 0}
+.divider{display:block;width:60px;height:4px;background:linear-gradient(90deg,var(--teal),var(--purple));border-radius:2px;margin:.6rem auto 0}
 
-    /* HERO */
-    #hero{
-      min-height:100vh;display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(135deg,#d4f0ed 0%,#fff0fa 50%,#e8d5b7 100%);
-      text-align:center;overflow:hidden;
-    }
-    .hero-inner{position:relative;z-index:2}
-    .hero-tag{
-      display:inline-block;background:var(--purple);color:#fff;
-      font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-      border-radius:999px;padding:.35rem 1.1rem;margin-bottom:1.4rem;
-    }
-    .hero-title{
-      font-family:'Poppins',sans-serif;font-weight:800;
-      font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.15;color:var(--brown);
-    }
-    .hero-title .accent{color:var(--teal-dark)}
-    .hero-sub{font-size:clamp(1rem,2.2vw,1.35rem);color:#555;margin:1.2rem 0 2.2rem}
-    .hero-emojis{font-size:2.4rem;letter-spacing:.4rem;margin-bottom:2rem}
-    .boba-scene{position:relative;display:flex;justify-content:center;align-items:center;margin-top:4rem;height:340px;perspective:700px}
-    .boba-3d-cup{position:relative;z-index:2;animation:bounceCup 3.2s ease-in-out infinite;filter:drop-shadow(0 24px 40px rgba(90,172,170,.4))}
-    @keyframes bounceCup{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
-    .orbit-ring{position:absolute;width:340px;height:340px;transform-style:preserve-3d;animation:spinOrbit 9s linear infinite}
-    @keyframes spinOrbit{to{transform:rotateY(360deg)}}
-    .orbit-ring span{position:absolute;top:50%;left:50%;font-family:'Poppins',sans-serif;font-weight:700;font-size:.82rem;color:var(--teal-dark);transform-style:preserve-3d;white-space:nowrap}
+/* HERO */
+#hero{
+min-height:100vh;display:flex;align-items:center;justify-content:center;
+background:linear-gradient(135deg,#d4f0ed 0%,#fff0fa 50%,#e8d5b7 100%);
+text-align:center;overflow:hidden;
+}
+.hero-inner{position:relative;z-index:2}
+.hero-tag{
+display:inline-block;background:var(--purple);color:#fff;
+font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+border-radius:999px;padding:.35rem 1.1rem;margin-bottom:1.4rem;
+}
+.hero-title{
+font-family:'Poppins',sans-serif;font-weight:800;
+font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.15;color:var(--brown);
+}
+.hero-title .accent{color:var(--teal-dark)}
+.hero-sub{font-size:clamp(1rem,2.2vw,1.35rem);color:#555;margin:1.2rem 0 2.2rem}
+.hero-emojis{font-size:2.4rem;letter-spacing:.4rem;margin-bottom:2rem}
+.boba-cup-wrap{display:flex;justify-content:center;gap:2.5rem;margin-top:5rem;flex-wrap:wrap}
+.boba-cup{display:flex;flex-direction:column;align-items:center;animation:bounceCup 3s ease-in-out infinite}
+.boba-cup:nth-child(2){animation-delay:.6s}
+.boba-cup:nth-child(3){animation-delay:1.2s}
+@keyframes bounceCup{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.cup-lid{width:70px;height:14px;background:var(--teal);border-radius:6px 6px 0 0;position:relative}
+.cup-straw{width:6px;height:38px;background:linear-gradient(var(--purple),var(--teal));border-radius:3px;margin-top:-38px;align-self:flex-start;margin-left:28px;position:relative;z-index:3}
+.cup-body{
+width:64px;height:88px;
+background:linear-gradient(160deg,rgba(159,204,200,.55) 0%,rgba(244,167,185,.45) 100%);
+border:2.5px solid var(--teal-dark);border-top:none;border-radius:4px 4px 16px 16px;
+position:relative;overflow:hidden;
+}
+.cup-body::before{
+content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);
+width:48px;height:18px;
+background:radial-gradient(circle,var(--brown) 4px,transparent 4px) 0 0/12px 12px,
+radial-gradient(circle,var(--brown) 4px,transparent 4px) 6px 6px/12px 12px;
+opacity:.65;
+}
+.cup-label{font-family:'Poppins',sans-serif;font-size:.67rem;font-weight:700;color:var(--brown);margin-top:.4rem;text-align:center;max-width:72px}
 
-    /* MENU CARDS */
-    .menu-section{background:#fff}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.6rem}
-    .card{
-      background:#fff;border-radius:18px;padding:1.8rem 1.6rem;
-      box-shadow:0 4px 24px rgba(0,0,0,.07);border-top:4px solid var(--teal);
-      transition:transform .25s,box-shadow .25s;
-      display:flex;flex-direction:column;align-items:center;text-align:center;
-    }
-    .card:hover{transform:translateY(-6px);box-shadow:0 10px 32px rgba(0,0,0,.12)}
-    .card .boba-art{margin-bottom:1rem;filter:drop-shadow(0 4px 8px rgba(0,0,0,.12));transition:transform .3s}
-    .card .boba-art img{width:120px;height:120px;object-fit:cover;border-radius:12px}
-    .card:hover .boba-art{transform:translateY(-4px) rotate(2deg)}
-    .card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.1rem;color:var(--brown);margin-bottom:.5rem}
-    .card p{font-size:.88rem;color:#555;line-height:1.65}
+/* MENU CARDS */
+.menu-section{background:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.6rem}
+.card{
+background:#fff;border-radius:18px;padding:1.8rem 1.6rem;
+box-shadow:0 4px 24px rgba(0,0,0,.07);border-top:4px solid var(--teal);
+transition:transform .25s,box-shadow .25s;
+display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 10px 32px rgba(0,0,0,.12)}
+.card .boba-art{margin-bottom:1rem;filter:drop-shadow(0 4px 8px rgba(0,0,0,.12));transition:transform .3s}
+.card .boba-art img{width:120px;height:120px;object-fit:cover;border-radius:12px}
+.card:hover .boba-art{transform:translateY(-4px) rotate(2deg)}
+.card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.1rem;color:var(--brown);margin-bottom:.5rem}
+.card p{font-size:.88rem;color:#555;line-height:1.65}
 
-    /* PANELISTS */
-    #panelists{background:linear-gradient(135deg,#f0fdfc,#fdf0ff)}
-    .panelist-cards{display:flex;gap:1.8rem;justify-content:center;flex-wrap:wrap}
-    .panelist-card{
-      background:#fff;border-radius:20px;padding:2rem 1.8rem;
-      text-align:center;flex:1;min-width:200px;max-width:280px;
-      box-shadow:0 4px 20px rgba(0,0,0,.08);transition:transform .25s;
-    }
-    .panelist-card:hover{transform:translateY(-5px)}
-    .avatar-wrap{
-      width:90px;height:90px;border-radius:50%;margin:0 auto 1rem;
-      overflow:hidden;border:3px solid var(--teal);
-      display:flex;align-items:center;justify-content:center;
-      background:#f0f0f0;
-    }
-    .avatar-wrap img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-    .avatar-fallback{font-size:2rem}
-    .panelist-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;color:var(--brown);margin-bottom:.3rem}
-    .panelist-card .role{font-size:.82rem;color:#777}
-    .unavailable .avatar-wrap{border-color:#ccc;opacity:.6}
-    .unavailable h3,.unavailable .role{text-decoration:line-through;color:#aaa}
-    .badge{display:inline-block;font-size:.7rem;font-weight:700;color:#fff;background:#f39c12;border-radius:999px;padding:.2rem .7rem;margin-top:.6rem}
-    .badge-unavail{background:#ccc}
+/* PANELISTS */
+#panelists{background:linear-gradient(135deg,#f0fdfc,#fdf0ff)}
+.panelist-cards{display:flex;gap:1.8rem;justify-content:center;flex-wrap:wrap}
+.panelist-card{
+background:#fff;border-radius:20px;padding:2rem 1.8rem;
+text-align:center;flex:1;min-width:200px;max-width:280px;
+box-shadow:0 4px 20px rgba(0,0,0,.08);transition:transform .25s;
+}
+.panelist-card:hover{transform:translateY(-5px)}
+.avatar-wrap{
+width:90px;height:90px;border-radius:50%;margin:0 auto 1rem;
+overflow:hidden;border:3px solid var(--teal);
+display:flex;align-items:center;justify-content:center;
+background:#f0f0f0;
+}
+.avatar-wrap img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.avatar-fallback{font-size:2rem}
+.panelist-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;color:var(--brown);margin-bottom:.3rem}
+.panelist-card .role{font-size:.82rem;color:#777}
+.unavailable .avatar-wrap{border-color:#ccc;opacity:.6}
+.unavailable h3,.unavailable .role{text-decoration:line-through;color:#aaa}
+.badge{display:inline-block;font-size:.7rem;font-weight:700;color:#fff;background:#f39c12;border-radius:999px;padding:.2rem .7rem;margin-top:.6rem}
+.badge-unavail{background:#ccc}
 
-    /* HOW IT WORKS */
-    #how{background:var(--cream)}
-    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.6rem;margin-top:1rem}
-    .step{background:#fff;border-radius:16px;padding:1.6rem 1.4rem;text-align:center;border-bottom:4px solid var(--teal-dark)}
-    .step-num{
-      width:46px;height:46px;border-radius:50%;background:var(--teal);color:#fff;
-      font-family:'Poppins',sans-serif;font-weight:800;font-size:1.2rem;
-      display:flex;align-items:center;justify-content:center;margin:0 auto .9rem;
-    }
-    .step h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;color:var(--brown);margin-bottom:.4rem}
-    .step p{font-size:.85rem;color:#666;line-height:1.6}
+/* HOW IT WORKS */
+#how{background:var(--cream)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.6rem;margin-top:1rem}
+.step{background:#fff;border-radius:16px;padding:1.6rem 1.4rem;text-align:center;border-bottom:4px solid var(--teal-dark)}
+.step-num{
+width:46px;height:46px;border-radius:50%;background:var(--teal);color:#fff;
+font-family:'Poppins',sans-serif;font-weight:800;font-size:1.2rem;
+display:flex;align-items:center;justify-content:center;margin:0 auto .9rem;
+}
+.step h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;color:var(--brown);margin-bottom:.4rem}
+.step p{font-size:.85rem;color:#666;line-height:1.6}
 
-    /* PEARLS */
-    .pearls{display:flex;justify-content:center;gap:.5rem;margin-top:2.5rem}
-    .pearl{width:14px;height:14px;border-radius:50%;background:var(--brown);opacity:.3;animation:pulsePearl 1.8s ease-in-out infinite}
-    .pearl:nth-child(2){animation-delay:.3s;opacity:.5}
-    .pearl:nth-child(3){animation-delay:.6s;opacity:.7}
-    .pearl:nth-child(4){animation-delay:.3s;opacity:.5}
-    .pearl:nth-child(5){animation-delay:.6s;opacity:.3}
-    @keyframes pulsePearl{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+/* PEARLS */
+.pearls{display:flex;justify-content:center;gap:.5rem;margin-top:2.5rem}
+.pearl{width:14px;height:14px;border-radius:50%;background:var(--brown);opacity:.3;animation:pulsePearl 1.8s ease-in-out infinite}
+.pearl:nth-child(2){animation-delay:.3s;opacity:.5}
+.pearl:nth-child(3){animation-delay:.6s;opacity:.7}
+.pearl:nth-child(4){animation-delay:.3s;opacity:.5}
+.pearl:nth-child(5){animation-delay:.6s;opacity:.3}
+@keyframes pulsePearl{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
 
-    /* THANK YOU */
-    #thankyou{background:linear-gradient(135deg,var(--brown) 0%,#3d2014 100%);color:#fff;text-align:center;padding:5rem 0}
-    #thankyou h2{color:#fff}
-    #thankyou .divider{background:linear-gradient(90deg,var(--teal),var(--pink))}
-    #thankyou .section-subtitle{color:rgba(255,255,255,.7)}
-    #thankyou p{color:rgba(255,255,255,.85);margin-bottom:1rem;font-size:.95rem}
-    .erg-channels{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:2.5rem}
-    .erg-pill{
-      background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.3);
-      border-radius:999px;padding:.6rem 1.5rem;
-      font-family:'Poppins',sans-serif;font-weight:700;font-size:.88rem;
-      color:#fff;letter-spacing:.05em;transition:background .25s;
-    }
-    .erg-pill:hover{background:rgba(255,255,255,.22)}
-    .ty-emoji{font-size:3rem;margin-bottom:1rem}
-    .footer-note{margin-top:3rem;font-size:.75rem;color:rgba(255,255,255,.35)}
+/* THANK YOU */
+#thankyou{background:linear-gradient(135deg,var(--brown) 0%,#3d2014 100%);color:#fff;text-align:center;padding:5rem 0}
+#thankyou h2{color:#fff}
+#thankyou .divider{background:linear-gradient(90deg,var(--teal),var(--pink))}
+#thankyou .section-subtitle{color:rgba(255,255,255,.7)}
+#thankyou p{color:rgba(255,255,255,.85);margin-bottom:1rem;font-size:.95rem}
+.erg-channels{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:2.5rem}
+.erg-pill{
+background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.3);
+border-radius:999px;padding:.6rem 1.5rem;
+font-family:'Poppins',sans-serif;font-weight:700;font-size:.88rem;
+color:#fff;letter-spacing:.05em;transition:background .25s;
+}
+.erg-pill:hover{background:rgba(255,255,255,.22)}
+.ty-emoji{font-size:3rem;margin-bottom:1rem}
+.footer-note{margin-top:3rem;font-size:.75rem;color:rgba(255,255,255,.35)}
 
-    @media(max-width:600px){
-      nav ul{gap:.8rem}
-      .boba-cup-wrap{gap:1.5rem}
-    }
-  </style>
+@media(max-width:600px){
+nav ul{gap:.8rem}
+.boba-cup-wrap{gap:1.5rem}
+}
+</style>
 </head>
 <body>
 
@@ -173,446 +189,380 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo">🧋 <span>Boba</span> Networking</div>
-  <ul>
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#boba-menu">Boba Menu</a></li>
-    <li><a href="#restaurant-spotlight">Restaurant Spotlight</a></li>
-    <li><a href="#snacks-menu">Snacks Menu</a></li>
-    <li><a href="#panelists">Panelists</a></li>
-    <li><a href="#how">How It Works</a></li>
-    <li><a href="#thankyou">Thank You</a></li>
-  </ul>
+<div class="logo">🧋 <span>Boba</span> Networking</div>
+<ul>
+<li><a href="#hero">Home</a></li>
+<li><a href="#boba-menu">Boba Menu</a></li>
+<li><a href="#restaurant-spotlight">Restaurant Spotlight</a></li>
+<li><a href="#snacks-menu">Snacks Menu</a></li>
+<li><a href="#panelists">Panelists</a></li>
+<li><a href="#how">How It Works</a></li>
+<li><a href="#thankyou">Thank You</a></li>
+</ul>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-inner container">
-    <div class="hero-tag">🌸 APA ERG &amp; Energy Hub Presents</div>
-    <h1 class="hero-title"><span class="accent">Boba Networking</span></h1>
-    <p class="hero-sub">Sip, connect, and grow — one rotation at a time 🧋</p>
-    <p class="hero-sub" style="font-size:clamp(.85rem,1.6vw,1.05rem);color:var(--teal-dark);margin-top:-.8rem">✨ Celebrating AAPI Heritage through food, drink &amp; community</p>
-    <div class="hero-emojis">🧋 🌺 🍵 🌸 🧋</div>
-    <div class="boba-scene">
-      <div class="orbit-ring" id="orbitRing"></div>
-      <div class="boba-3d-cup">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 290" width="200" height="290">
-          <defs>
-            <linearGradient id="strawG" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#A100FF"/>
-              <stop offset="100%" stop-color="#5AACAA"/>
-            </linearGradient>
-            <linearGradient id="lidTopG" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#c8e8e6"/>
-              <stop offset="100%" stop-color="#5AACAA"/>
-            </linearGradient>
-            <linearGradient id="lidSideG" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#9FCCC8"/>
-              <stop offset="100%" stop-color="#3d8a88"/>
-            </linearGradient>
-            <linearGradient id="cupBodyG" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="rgba(159,204,200,.75)"/>
-              <stop offset="45%" stop-color="rgba(244,167,185,.55)"/>
-              <stop offset="100%" stop-color="rgba(168,213,162,.55)"/>
-            </linearGradient>
-            <linearGradient id="liquidG" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="rgba(159,204,200,.7)"/>
-              <stop offset="50%" stop-color="rgba(244,167,185,.6)"/>
-              <stop offset="100%" stop-color="rgba(168,213,162,.6)"/>
-            </linearGradient>
-          </defs>
-          <!-- Straw -->
-          <rect x="122" y="2" width="11" height="88" rx="5" fill="url(#strawG)"/>
-          <!-- Lid top ellipse -->
-          <ellipse cx="100" cy="72" rx="72" ry="18" fill="url(#lidTopG)"/>
-          <!-- Lid side -->
-          <rect x="28" y="66" width="144" height="20" fill="url(#lidSideG)"/>
-          <!-- Lid bottom ellipse -->
-          <ellipse cx="100" cy="86" rx="72" ry="18" fill="#3d8a88"/>
-          <!-- Cup body -->
-          <path d="M33,88 L16,268 Q16,280 30,280 L170,280 Q184,280 184,268 L167,88 Z" fill="url(#cupBodyG)" stroke="#5AACAA" stroke-width="2"/>
-          <!-- Highlight (3D depth) -->
-          <path d="M46,98 L32,264 Q32,272 40,272 L68,272 L84,98 Z" fill="rgba(255,255,255,.17)" rx="4"/>
-          <!-- Liquid -->
-          <path d="M36,136 L20,268 Q20,278 32,278 L168,278 Q180,278 180,268 L164,136 Z" fill="url(#liquidG)" opacity=".55"/>
-          <!-- Pearls row 1 -->
-          <circle cx="70" cy="256" r="13" fill="#4a3728" opacity=".92"/>
-          <circle cx="100" cy="262" r="13" fill="#4a3728" opacity=".92"/>
-          <circle cx="130" cy="256" r="13" fill="#4a3728" opacity=".92"/>
-          <!-- Pearls row 2 -->
-          <circle cx="82" cy="238" r="11" fill="#4a3728" opacity=".75"/>
-          <circle cx="112" cy="238" r="11" fill="#4a3728" opacity=".75"/>
-          <circle cx="56" cy="240" r="10" fill="#4a3728" opacity=".6"/>
-          <circle cx="140" cy="240" r="10" fill="#4a3728" opacity=".6"/>
-          <!-- Condensation drops -->
-          <ellipse cx="52" cy="158" rx="3" ry="5" fill="rgba(255,255,255,.3)"/>
-          <ellipse cx="58" cy="182" rx="2.5" ry="4" fill="rgba(255,255,255,.22)"/>
-          <ellipse cx="48" cy="205" rx="2" ry="3.5" fill="rgba(255,255,255,.18)"/>
-        </svg>
-      </div>
-    </div>
-  </div>
+<div class="hero-inner container">
+<div class="hero-tag">🌸 APA ERG &amp; Energy Hub Presents</div>
+<h1 class="hero-title"><span class="accent">Boba Networking</span></h1>
+<p class="hero-sub">Sip, connect, and grow — one rotation at a time 🧋</p>
+<p class="hero-sub" style="font-size:clamp(.85rem,1.6vw,1.05rem);color:var(--teal-dark);margin-top:-.8rem">✨ Celebrating AAPI Heritage through food, drink &amp; community</p>
+<div class="hero-emojis">🧋 🌺 🍵 🌸 🧋</div>
+<div class="boba-cup-wrap">
+<div class="boba-cup">
+<div class="cup-straw"></div>
+<div class="cup-lid"></div>
+<div class="cup-body"></div>
+</div>
+<div class="boba-cup">
+<div class="cup-straw"></div>
+<div class="cup-lid" style="background:var(--pink)"></div>
+<div class="cup-body" style="background:linear-gradient(160deg,rgba(244,167,185,.5),rgba(232,213,183,.5))"></div>
+</div>
+<div class="boba-cup">
+<div class="cup-straw"></div>
+<div class="cup-lid" style="background:var(--pearl)"></div>
+<div class="cup-body" style="background:linear-gradient(160deg,rgba(232,213,183,.55),rgba(168,213,162,.4))"></div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- BOBA MENU -->
 <section id="boba-menu" class="menu-section">
-  <div class="container">
-    <h2 class="section-title">🧋 Boba Menu 🌸</h2>
-    <span class="divider"></span>
-    <p class="section-subtitle">Pick your perfect boba beverage!</p>
-    <div class="cards">
+<div class="container">
+<h2 class="section-title">🧋 Boba Menu 🌸</h2>
+<span class="divider"></span>
+<p class="section-subtitle">Pick your perfect boba beverage!</p>
+<div class="cards">
 
-      <div class="card">
-        <div class="boba-art">
-          <img src="https://fengchausa.com/wp-content/uploads/2025/08/Mango-Au-Lait.jpg" alt="Mango Au Lait"/>
-        </div>
-        <h3>Mango Green Tea w/ Lychee Jelly</h3>
-        <p>A vibrant drink that blends the crispness of green tea with a refreshing burst of rich mango flavor, served with lychee jellies.</p>
-        <p style="font-size:.78rem;color:var(--teal-dark);margin-top:.6rem;font-weight:600">🇹🇼 Originated in Taiwan</p>
-      </div>
+<div class="card">
+<div class="boba-art">
+<img src="https://fengchausa.com/wp-content/uploads/2025/08/Mango-Au-Lait.jpg" alt="Mango Au Lait"/>
+</div>
+<h3>Mango Green Tea w/ Lychee Jelly</h3>
+<p>A vibrant drink that blends the crispness of green tea with a refreshing burst of rich mango flavor, served with lychee jellies.</p>
+<p style="font-size:.78rem;color:var(--teal-dark);margin-top:.6rem;font-weight:600">🇹🇼 Originated in Taiwan</p>
+</div>
 
-      <div class="card">
-        <div class="boba-art">
-          <img src="https://fengchausa.com/wp-content/uploads/2025/08/Boba-Milk-Tea.jpg" alt="Boba Milk Tea"/>
-        </div>
-        <h3>Jasmine Green Milk Tea</h3>
-        <p>The perfect blend of fragrant jasmine green tea and a house blend milk, creating a smooth and aromatic classic milk tea experience.</p>
-        <p style="font-size:.78rem;color:var(--teal-dark);margin-top:.6rem;font-weight:600">🌿 Rooted in East Asian tea culture</p>
-      </div>
+<div class="card">
+<div class="boba-art">
+<img src="https://fengchausa.com/wp-content/uploads/2025/08/Boba-Milk-Tea.jpg" alt="Boba Milk Tea"/>
+</div>
+<h3>Jasmine Green Milk Tea</h3>
+<p>The perfect blend of fragrant jasmine green tea and a house blend milk, creating a smooth and aromatic classic milk tea experience.</p>
+<p style="font-size:.78rem;color:var(--teal-dark);margin-top:.6rem;font-weight:600">🌿 Rooted in East Asian tea culture</p>
+</div>
 
-      <div class="card">
-        <div class="boba-art">
-          <img src="https://fengchausa.com/wp-content/uploads/2025/08/Coconut-Latte.jpg" alt="Coconut Latte"/>
-        </div>
-        <h3>Coconut Latte</h3>
-        <p>Features a house-made coconut milk blend with lactose-friendly milk and rich cold brew coffee — tropical meets caffeine fix!</p>
-        <p style="font-size:.78rem;color:var(--teal-dark);margin-top:.6rem;font-weight:600">🌴 Inspired by Southeast Asian flavors</p>
-      </div>
+<div class="card">
+<div class="boba-art">
+<img src="https://fengchausa.com/wp-content/uploads/2025/08/Coconut-Latte.jpg" alt="Coconut Latte"/>
+</div>
+<h3>Coconut Latte</h3>
+<p>Features a house-made coconut milk blend with lactose-friendly milk and rich cold brew coffee — tropical meets caffeine fix!</p>
+<p style="font-size:.78rem;color:var(--teal-dark);margin-top:.6rem;font-weight:600">🌴 Inspired by Southeast Asian flavors</p>
+</div>
 
-    </div>
-    <div class="pearls">
-      <div class="pearl"></div><div class="pearl"></div><div class="pearl"></div>
-      <div class="pearl"></div><div class="pearl"></div>
-    </div>
-  </div>
+</div>
+<div class="pearls">
+<div class="pearl"></div><div class="pearl"></div><div class="pearl"></div>
+<div class="pearl"></div><div class="pearl"></div>
+</div>
+</div>
 </section>
 
 <!-- RESTAURANT SPOTLIGHT -->
 <section id="restaurant-spotlight" style="background:linear-gradient(135deg,#fff8f0,#fdf0ff);padding:5rem 0">
-  <div class="container">
-    <h2 class="section-title">🍽️ Restaurant Spotlight</h2>
-    <span class="divider"></span>
-    <p class="section-subtitle">Discover a local AAPI-owned gem worth visiting!</p>
+<div class="container">
+<h2 class="section-title">🍽️ Restaurant Spotlight</h2>
+<span class="divider"></span>
+<p class="section-subtitle">Discover a local AAPI-owned gem worth visiting!</p>
 
-    <div style="max-width:780px;margin:0 auto;background:linear-gradient(160deg,#8B0000,#5c0000);border-radius:24px;box-shadow:0 6px 32px rgba(0,0,0,.3);overflow:hidden;border-top:5px solid #F5C518">
+<div style="max-width:780px;margin:0 auto;background:linear-gradient(160deg,#8B0000,#5c0000);border-radius:24px;box-shadow:0 6px 32px rgba(0,0,0,.3);overflow:hidden;border-top:5px solid #F5C518">
 
-      <!-- Header banner -->
-      <div style="padding:2.2rem 2.4rem;text-align:center;border-bottom:1px solid rgba(245,197,24,.25)">
-        <p style="color:#F5C518;font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem">Featured Restaurant</p>
-        <h3 style="font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:#fff;margin-bottom:.2rem">Trendy Dumpling</h3>
-        <div style="display:flex;justify-content:center;gap:.3rem;margin-top:.8rem">
-          <span style="color:#F5C518;font-size:1.3rem">★★★★★</span>
-        </div>
-      </div>
+<!-- Header banner -->
+<div style="padding:2.2rem 2.4rem;text-align:center;border-bottom:1px solid rgba(245,197,24,.25)">
+<p style="color:#F5C518;font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem">Featured Restaurant</p>
+<h3 style="font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:#fff;margin-bottom:.2rem">Trendy Dumpling</h3>
+<div style="display:flex;justify-content:center;gap:.3rem;margin-top:.8rem">
+<span style="color:#F5C518;font-size:1.3rem">★★★★★</span>
+</div>
+</div>
 
-      <!-- Info pills -->
-      <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;padding:1.4rem 2rem;border-bottom:1px solid rgba(245,197,24,.25);background:linear-gradient(135deg,#7a0000,#4d0000)">
-        <div style="display:flex;align-items:center;gap:.45rem;font-size:.85rem;color:#F5C518;font-weight:600">
-          <span style="font-size:1.1rem">📍</span> Fannin St, Houston
-        </div>
-        <div style="display:flex;align-items:center;gap:.45rem;font-size:.85rem;color:#F5C518;font-weight:600">
-          <span style="font-size:1.1rem">🍜</span> Southern Chinese
-        </div>
-        <div style="display:flex;align-items:center;gap:.45rem;font-size:.85rem;color:#F5C518;font-weight:600">
-          <span style="font-size:1.1rem">🕙</span> 10 AM – 1:30 PM
-        </div>
-      </div>
+<!-- Info pills -->
+<div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;padding:1.4rem 2rem;border-bottom:1px solid rgba(245,197,24,.25);background:linear-gradient(135deg,#7a0000,#4d0000)">
+<div style="display:flex;align-items:center;gap:.45rem;font-size:.85rem;color:#F5C518;font-weight:600">
+<span style="font-size:1.1rem">📍</span> Fannin St, Houston
+</div>
+<div style="display:flex;align-items:center;gap:.45rem;font-size:.85rem;color:#F5C518;font-weight:600">
+<span style="font-size:1.1rem">🍜</span> Southern Chinese
+</div>
+<div style="display:flex;align-items:center;gap:.45rem;font-size:.85rem;color:#F5C518;font-weight:600">
+<span style="font-size:1.1rem">🕙</span> 10 AM – 1:30 PM
+</div>
+</div>
 
-      <!-- Detail rows -->
-      <div style="padding:1.8rem 2.4rem;display:flex;flex-direction:column;gap:1.2rem">
+<!-- Detail rows -->
+<div style="padding:1.8rem 2.4rem;display:flex;flex-direction:column;gap:1.2rem">
 
-        <div style="display:flex;gap:1rem;align-items:flex-start">
-          <span style="font-size:1.4rem;flex-shrink:0;margin-top:.1rem">🌶️</span>
-          <div>
-            <p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;color:#F5C518;margin-bottom:.25rem">Origination</p>
-            <p style="font-size:.88rem;color:#fff;line-height:1.65">Began as <strong>Spicy Girl</strong>, a popular Sichuan-style eatery in Houston's Upper Kirby neighborhood.</p>
-          </div>
-        </div>
+<div style="display:flex;gap:1rem;align-items:flex-start">
+<span style="font-size:1.4rem;flex-shrink:0;margin-top:.1rem">🌶️</span>
+<div>
+<p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;color:#F5C518;margin-bottom:.25rem">Origination</p>
+<p style="font-size:.88rem;color:#fff;line-height:1.65">Began as <strong>Spicy Girl</strong>, a popular Sichuan-style eatery in Houston's Upper Kirby neighborhood.</p>
+</div>
+</div>
 
-        <div style="height:1px;background:rgba(245,197,24,.2)"></div>
+<div style="height:1px;background:rgba(245,197,24,.2)"></div>
 
-        <div style="display:flex;gap:1rem;align-items:flex-start">
-          <span style="font-size:1.4rem;flex-shrink:0;margin-top:.1rem">👨‍🍳</span>
-          <div>
-            <p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;color:#F5C518;margin-bottom:.25rem">What's in the Kitchen</p>
-            <p style="font-size:.88rem;color:#fff;line-height:1.65">Blending Chinese culinary techniques with contemporary flair.</p>
-          </div>
-        </div>
+<div style="display:flex;gap:1rem;align-items:flex-start">
+<span style="font-size:1.4rem;flex-shrink:0;margin-top:.1rem">👨‍🍳</span>
+<div>
+<p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;color:#F5C518;margin-bottom:.25rem">What's in the Kitchen</p>
+<p style="font-size:.88rem;color:#fff;line-height:1.65">Blending Chinese culinary techniques with contemporary flair.</p>
+</div>
+</div>
 
-        <div style="height:1px;background:rgba(245,197,24,.2)"></div>
+<div style="height:1px;background:rgba(245,197,24,.2)"></div>
 
-        <div style="display:flex;gap:1rem;align-items:flex-start">
-          <span style="font-size:1.4rem;flex-shrink:0;margin-top:.1rem">🔍</span>
-          <div>
-            <p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;color:#F5C518;margin-bottom:.25rem">Features</p>
-            <p style="font-size:.88rem;color:#fff;line-height:1.65">Open kitchen allowing customers to watch chefs hand-pull dough, adding an interactive and memorable dining element.</p>
-          </div>
-        </div>
+<div style="display:flex;gap:1rem;align-items:flex-start">
+<span style="font-size:1.4rem;flex-shrink:0;margin-top:.1rem">🔍</span>
+<div>
+<p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;color:#F5C518;margin-bottom:.25rem">Features</p>
+<p style="font-size:.88rem;color:#fff;line-height:1.65">Open kitchen allowing customers to watch chefs hand-pull dough, adding an interactive and memorable dining element.</p>
+</div>
+</div>
 
-        <div style="height:1px;background:rgba(245,197,24,.2)"></div>
+<div style="height:1px;background:rgba(245,197,24,.2)"></div>
 
-        <div style="display:flex;gap:1rem;align-items:flex-start">
-          <span style="font-size:1.4rem;flex-shrink:0;margin-top:.1rem">🥟</span>
-          <div>
-            <p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;color:#F5C518;margin-bottom:.25rem">Feeling Foodie</p>
-            <p style="font-size:.88rem;color:#fff;line-height:1.65">While rooted in Sichuan tradition, Trendy Dumpling has expanded beyond — now offering fusion items like <strong>mapo tofu ramen</strong> and <strong>chocolate soup dumplings</strong>.</p>
-          </div>
-        </div>
+<div style="display:flex;gap:1rem;align-items:flex-start">
+<span style="font-size:1.4rem;flex-shrink:0;margin-top:.1rem">🥟</span>
+<div>
+<p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;color:#F5C518;margin-bottom:.25rem">Feeling Foodie</p>
+<p style="font-size:.88rem;color:#fff;line-height:1.65">While rooted in Sichuan tradition, Trendy Dumpling has expanded beyond — now offering fusion items like <strong>mapo tofu ramen</strong> and <strong>chocolate soup dumplings</strong>.</p>
+</div>
+</div>
 
-      </div>
-    </div>
+</div>
+</div>
 
-    <div class="pearls" style="margin-top:2.5rem">
-      <div class="pearl"></div><div class="pearl"></div><div class="pearl"></div>
-      <div class="pearl"></div><div class="pearl"></div>
-    </div>
-  </div>
+<div class="pearls" style="margin-top:2.5rem">
+<div class="pearl"></div><div class="pearl"></div><div class="pearl"></div>
+<div class="pearl"></div><div class="pearl"></div>
+</div>
+</div>
 </section>
 
 <!-- SNACKS MENU -->
 <section id="snacks-menu" class="menu-section">
-  <div class="container">
-    <h2 class="section-title">🍡 Snacks Menu 🌸</h2>
-    <span class="divider"></span>
-    <p class="section-subtitle">Tasty bites to snack on while you network!</p>
-    <div class="cards">
+<div class="container">
+<h2 class="section-title">🍡 Snacks Menu 🌸</h2>
+<span class="divider"></span>
+<p class="section-subtitle">Tasty bites to snack on while you network!</p>
+<div class="cards">
 
-      <div class="card">
-        <div class="boba-art">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 100" width="90" height="100">
-            <!-- Skewer stick -->
-            <rect x="42" y="5" width="6" height="88" rx="3" fill="#c8a06e"/>
-            <!-- Mochi balls -->
-            <circle cx="45" cy="22" r="14" fill="#f9c8d9" stroke="#f4a7b9" stroke-width="1.5"/>
-            <circle cx="45" cy="50" r="14" fill="#fde8f0" stroke="#f4a7b9" stroke-width="1.5"/>
-            <circle cx="45" cy="78" r="14" fill="#f4a7b9" stroke="#e8709a" stroke-width="1.5"/>
-            <!-- Shine highlights -->
-            <circle cx="40" cy="17" r="3.5" fill="#fff" opacity="0.5"/>
-            <circle cx="40" cy="45" r="3.5" fill="#fff" opacity="0.5"/>
-            <circle cx="40" cy="73" r="3.5" fill="#fff" opacity="0.5"/>
-          </svg>
-        </div>
-        <h3>TBD</h3>
-        <p>Coming soon!</p>
-      </div>
+<div class="card">
+<div class="boba-art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 100" width="90" height="100">
+<!-- Skewer stick -->
+<rect x="42" y="5" width="6" height="88" rx="3" fill="#c8a06e"/>
+<!-- Mochi balls -->
+<circle cx="45" cy="22" r="14" fill="#f9c8d9" stroke="#f4a7b9" stroke-width="1.5"/>
+<circle cx="45" cy="50" r="14" fill="#fde8f0" stroke="#f4a7b9" stroke-width="1.5"/>
+<circle cx="45" cy="78" r="14" fill="#f4a7b9" stroke="#e8709a" stroke-width="1.5"/>
+<!-- Shine highlights -->
+<circle cx="40" cy="17" r="3.5" fill="#fff" opacity="0.5"/>
+<circle cx="40" cy="45" r="3.5" fill="#fff" opacity="0.5"/>
+<circle cx="40" cy="73" r="3.5" fill="#fff" opacity="0.5"/>
+</svg>
+</div>
+<h3>TBD</h3>
+<p>Coming soon!</p>
+</div>
 
-      <div class="card">
-        <div class="boba-art">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 100" width="90" height="100">
-            <!-- Bag base -->
-            <path d="M18,55 Q18,90 45,90 Q72,90 72,55 L65,30 L25,30 Z" fill="#f5e6cc" stroke="#d4b896" stroke-width="2"/>
-            <!-- Bag top fold -->
-            <rect x="22" y="20" width="46" height="14" rx="4" fill="#e8d0a0" stroke="#d4b896" stroke-width="1.5"/>
-            <!-- Popcorn pieces -->
-            <ellipse cx="35" cy="48" rx="8" ry="7" fill="#f9e4a0" stroke="#e8c860" stroke-width="1"/>
-            <ellipse cx="50" cy="44" rx="9" ry="8" fill="#fff5cc" stroke="#e8c860" stroke-width="1"/>
-            <ellipse cx="62" cy="50" rx="7" ry="7" fill="#f9e4a0" stroke="#e8c860" stroke-width="1"/>
-            <ellipse cx="42" cy="62" rx="8" ry="7" fill="#fff5cc" stroke="#e8c860" stroke-width="1"/>
-            <ellipse cx="56" cy="65" rx="7" ry="6" fill="#f9e4a0" stroke="#e8c860" stroke-width="1"/>
-            <ellipse cx="30" cy="65" rx="6" ry="6" fill="#fff5cc" stroke="#e8c860" stroke-width="1"/>
-            <!-- Seasoning dots -->
-            <circle cx="35" cy="47" r="1.5" fill="#c8a000" opacity="0.6"/>
-            <circle cx="50" cy="43" r="1.5" fill="#c8a000" opacity="0.6"/>
-            <circle cx="62" cy="49" r="1.5" fill="#c8a000" opacity="0.6"/>
-          </svg>
-        </div>
-        <h3>TBD</h3>
-        <p>Coming soon!</p>
-      </div>
+<div class="card">
+<div class="boba-art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 100" width="90" height="100">
+<!-- Bag base -->
+<path d="M18,55 Q18,90 45,90 Q72,90 72,55 L65,30 L25,30 Z" fill="#f5e6cc" stroke="#d4b896" stroke-width="2"/>
+<!-- Bag top fold -->
+<rect x="22" y="20" width="46" height="14" rx="4" fill="#e8d0a0" stroke="#d4b896" stroke-width="1.5"/>
+<!-- Popcorn pieces -->
+<ellipse cx="35" cy="48" rx="8" ry="7" fill="#f9e4a0" stroke="#e8c860" stroke-width="1"/>
+<ellipse cx="50" cy="44" rx="9" ry="8" fill="#fff5cc" stroke="#e8c860" stroke-width="1"/>
+<ellipse cx="62" cy="50" rx="7" ry="7" fill="#f9e4a0" stroke="#e8c860" stroke-width="1"/>
+<ellipse cx="42" cy="62" rx="8" ry="7" fill="#fff5cc" stroke="#e8c860" stroke-width="1"/>
+<ellipse cx="56" cy="65" rx="7" ry="6" fill="#f9e4a0" stroke="#e8c860" stroke-width="1"/>
+<ellipse cx="30" cy="65" rx="6" ry="6" fill="#fff5cc" stroke="#e8c860" stroke-width="1"/>
+<!-- Seasoning dots -->
+<circle cx="35" cy="47" r="1.5" fill="#c8a000" opacity="0.6"/>
+<circle cx="50" cy="43" r="1.5" fill="#c8a000" opacity="0.6"/>
+<circle cx="62" cy="49" r="1.5" fill="#c8a000" opacity="0.6"/>
+</svg>
+</div>
+<h3>TBD</h3>
+<p>Coming soon!</p>
+</div>
 
-      <div class="card">
-        <div class="boba-art">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 100" width="90" height="100">
-            <!-- Egg waffle grid -->
-            <rect x="10" y="15" width="70" height="72" rx="12" fill="#f9e4a0" stroke="#e8c060" stroke-width="2"/>
-            <!-- Bubble grid pattern -->
-            <circle cx="25" cy="30" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
-            <circle cx="45" cy="30" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
-            <circle cx="65" cy="30" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
-            <circle cx="25" cy="51" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
-            <circle cx="45" cy="51" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
-            <circle cx="65" cy="51" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
-            <circle cx="25" cy="72" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
-            <circle cx="45" cy="72" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
-            <circle cx="65" cy="72" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
-          </svg>
-        </div>
-        <h3>TBD</h3>
-        <p>Coming soon!</p>
-      </div>
+<div class="card">
+<div class="boba-art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 100" width="90" height="100">
+<!-- Egg waffle grid -->
+<rect x="10" y="15" width="70" height="72" rx="12" fill="#f9e4a0" stroke="#e8c060" stroke-width="2"/>
+<!-- Bubble grid pattern -->
+<circle cx="25" cy="30" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
+<circle cx="45" cy="30" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
+<circle cx="65" cy="30" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
+<circle cx="25" cy="51" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
+<circle cx="45" cy="51" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
+<circle cx="65" cy="51" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
+<circle cx="25" cy="72" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
+<circle cx="45" cy="72" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
+<circle cx="65" cy="72" r="8" fill="#fffbe0" stroke="#e8c060" stroke-width="1.2"/>
+</svg>
+</div>
+<h3>TBD</h3>
+<p>Coming soon!</p>
+</div>
 
-    </div>
-    <div class="pearls">
-      <div class="pearl"></div><div class="pearl"></div><div class="pearl"></div>
-      <div class="pearl"></div><div class="pearl"></div>
-    </div>
-  </div>
+</div>
+<div class="pearls">
+<div class="pearl"></div><div class="pearl"></div><div class="pearl"></div>
+<div class="pearl"></div><div class="pearl"></div>
+</div>
+</div>
 </section>
 
 <!-- PANELISTS -->
 <section id="panelists">
-  <div class="container">
-    <h2 class="section-title">🌸 Today's Panelists</h2>
-    <span class="divider"></span>
-    <p class="section-subtitle">Meet the incredible people you'll be networking with today!</p>
-    <div class="panelist-cards">
+<div class="container">
+<h2 class="section-title">🌸 Today's Panelists</h2>
+<span class="divider"></span>
+<p class="section-subtitle">Meet the incredible people you'll be networking with today!</p>
+<div class="panelist-cards">
 
-      <div class="panelist-card">
-        <div class="avatar-wrap">
-          <img src="anna.jpg"/>
-        </div>
-        <h3>Anna Yue</h3>
-        <p class="role">Management Consulting<br/>Senior Principal</p>
-        <span class="badge">Panelist</span>
-      </div>
+<div class="panelist-card">
+<div class="avatar-wrap">
+<img src="anna.jpg"/>
+</div>
+<h3>Anna Yue</h3>
+<p class="role">Management Consulting<br/>Senior Principal</p>
+<span class="badge">Panelist</span>
+</div>
 
-      <div class="panelist-card">
-        <div class="avatar-wrap">
-          <img src="alejandro.jpg"/>
-        </div>
-        <h3>Alejandro Laynez Gomez</h3>
-        <p class="role">Utilities Power Generation<br/>Consulting Manager</p>
-        <span class="badge">Panelist</span>
-      </div>
+<div class="panelist-card">
+<div class="avatar-wrap">
+<img src="alejandro.jpg"/>
+</div>
+<h3>Alejandro Laynez Gomez</h3>
+<p class="role">Utilities Power Generation<br/>Consulting Manager</p>
+<span class="badge">Panelist</span>
+</div>
 
-      <div class="panelist-card">
-        <div class="avatar-wrap">
-          <img src="piyush.jpg"/>
-        </div>
-        <h3>Piyush Solanki</h3>
-        <p class="role">Tech Architecture Manager</p>
-        <span class="badge">Panelist</span>
-      </div>
+<div class="panelist-card">
+<div class="avatar-wrap">
+<img src="piyush.jpg"/>
+</div>
+<h3>Piyush Solanki</h3>
+<p class="role">Tech Architecture Manager</p>
+<span class="badge">Panelist</span>
+</div>
 
-    </div>
-  </div>
+</div>
+</div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section id="how">
-  <div class="container">
-    <h2 class="section-title">🏮 How It Works</h2>
-    <span class="divider"></span>
-    <p class="section-subtitle">Speed networking — boba style!</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Panelists Take Their Corners</h3>
-        <p>Each featured panelist sets up in a different corner of the room, ready to share their experience and insights.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Break Into Groups</h3>
-        <p>Attendees are split into small breakout groups and assigned to a panelist to begin the conversation.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Rotate Every 10–15 Min</h3>
-        <p>When time is up, groups rotate to the next panelist's corner — making sure everyone gets a chance to connect!</p>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h3>Sip &amp; Enjoy 🧋</h3>
-        <p>Grab your boba and make the most of every conversation. New connections await!</p>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<h2 class="section-title">🏮 How It Works</h2>
+<span class="divider"></span>
+<p class="section-subtitle">Speed networking — boba style!</p>
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<h3>Panelists Take Their Corners</h3>
+<p>Each featured panelist sets up in a different corner of the room, ready to share their experience and insights.</p>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<h3>Break Into Groups</h3>
+<p>Attendees are split into small breakout groups and assigned to a panelist to begin the conversation.</p>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<h3>Rotate Every 10–15 Min</h3>
+<p>When time is up, groups rotate to the next panelist's corner — making sure everyone gets a chance to connect!</p>
+</div>
+<div class="step">
+<div class="step-num">4</div>
+<h3>Sip &amp; Enjoy 🧋</h3>
+<p>Grab your boba and make the most of every conversation. New connections await!</p>
+</div>
+</div>
+</div>
 </section>
 
 <!-- THANK YOU -->
 <section id="thankyou">
-  <div class="container">
-    <div class="ty-emoji">🙏🧋🌸</div>
-    <h2 class="section-title">Thank You!</h2>
-    <span class="divider"></span>
-    <p class="section-subtitle">To our amazing panelists &amp; all attendees</p>
-    <p>We hope you had a wonderful time connecting over boba!</p>
-    <p>We hope to see you at another event soon! 🌟</p>
-    <p style="margin-top:1.5rem;font-size:.9rem;color:rgba(255,255,255,.6)">
-      🗓️ Up Next: <strong style="color:var(--teal)">To Be Announced</strong>
-    </p>
-    <div class="erg-channels">
-      <div class="erg-pill">📢 APA ERG Teams Channel</div>
-    </div>
-    <div class="footer-note">APA ERG &amp; Energy Hub · October Funfest · Boba Speed Networking Event</div>
-  </div>
+<div class="container">
+<div class="ty-emoji">🙏🧋🌸</div>
+<h2 class="section-title">Thank You!</h2>
+<span class="divider"></span>
+<p class="section-subtitle">To our amazing panelists &amp; all attendees</p>
+<p>We hope you had a wonderful time connecting over boba!</p>
+<p>We hope to see you at another event soon! 🌟</p>
+<p style="margin-top:1.5rem;font-size:.9rem;color:rgba(255,255,255,.6)">
+🗓️ Up Next: <strong style="color:var(--teal)">To Be Announced</strong>
+</p>
+<div class="erg-channels">
+<div class="erg-pill">📢 APA ERG Teams Channel</div>
+</div>
+<div class="footer-note">APA ERG &amp; Energy Hub · October Funfest · Boba Speed Networking Event</div>
+</div>
 </section>
 
 <script>
-  const container = document.getElementById('bubblesContainer');
-  const colors = ['#9FCCC8','#F4A7B9','#A8D5A2','#E8D5B7','#A100FF','#6B3F26'];
-  for (let i = 0; i < 28; i++) {
-    const b = document.createElement('div');
-    b.classList.add('bubble');
-    const size = Math.random() * 42 + 12;
-    b.style.cssText = `
-      width:${size}px;height:${size}px;
-      left:${Math.random()*100}%;
-      background:${colors[Math.floor(Math.random()*colors.length)]};
-      animation-duration:${Math.random()*14+8}s;
-      animation-delay:${Math.random()*10}s;
-    `;
-    container.appendChild(b);
-  }
+const container = document.getElementById('bubblesContainer');
+const colors = ['#9FCCC8','#F4A7B9','#A8D5A2','#E8D5B7','#A100FF','#6B3F26'];
+for (let i = 0; i < 28; i++) {
+const b = document.createElement('div');
+b.classList.add('bubble');
+const size = Math.random() * 42 + 12;
+b.style.cssText = `
+     width:${size}px;height:${size}px;
+     left:${Math.random()*100}%;
+     background:${colors[Math.floor(Math.random()*colors.length)]};
+     animation-duration:${Math.random()*14+8}s;
+     animation-delay:${Math.random()*10}s;
+   `;
+container.appendChild(b);
+}
 
-  // Sakura petals
-  const petalColors = ['#f9c8d9','#f7b8cc','#fde8f0','#f4a7b9'];
-  for (let i = 0; i < 14; i++) {
-    const p = document.createElement('div');
-    p.classList.add('petal');
-    const size = Math.random() * 14 + 8;
-    const color = petalColors[Math.floor(Math.random() * petalColors.length)];
-    p.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(0,10,10)"/>
-      <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(72,10,10)"/>
-      <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(144,10,10)"/>
-      <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(216,10,10)"/>
-      <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(288,10,10)"/>
-      <circle cx="10" cy="10" r="2" fill="#f9e4ee"/>
-    </svg>`;
-    p.style.cssText = `
-      left:${Math.random()*100}%;
-      top:-30px;
-      animation-duration:${Math.random()*12+10}s;
-      animation-delay:${Math.random()*15}s;
-    `;
-    container.appendChild(p);
-  }
-
-  // Orbit ring text around boba cup
-  const orbitRing = document.getElementById('orbitRing');
-  if (orbitRing) {
-    const orbitLabel = 'APA ERG & Energy Hub  ✦  ';
-    const radius = 140;
-    const circumference = 2 * Math.PI * radius;
-    const avgCharWidth = 8.5;
-    const totalChars = Math.round(circumference / avgCharWidth);
-    const reps = Math.ceil(totalChars / orbitLabel.length);
-    const fullText = (orbitLabel.repeat(reps)).slice(0, totalChars);
-    fullText.split('').forEach((char, i) => {
-      const span = document.createElement('span');
-      span.textContent = char;
-      const angle = (i / fullText.length) * 360;
-      span.style.cssText = `
-        position:absolute;top:50%;left:50%;
-        font-family:'Poppins',sans-serif;font-weight:700;font-size:.82rem;
-        color:#5AACAA;letter-spacing:.02em;
-        transform:rotateY(${angle}deg) translateZ(${radius}px) translate(-50%,-50%);
-        transform-style:preserve-3d;
-      `;
-      orbitRing.appendChild(span);
-    });
-  }
+// Sakura petals
+const petalColors = ['#f9c8d9','#f7b8cc','#fde8f0','#f4a7b9'];
+for (let i = 0; i < 14; i++) {
+const p = document.createElement('div');
+p.classList.add('petal');
+const size = Math.random() * 14 + 8;
+const color = petalColors[Math.floor(Math.random() * petalColors.length)];
+p.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+     <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(0,10,10)"/>
+     <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(72,10,10)"/>
+     <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(144,10,10)"/>
+     <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(216,10,10)"/>
+     <ellipse cx="10" cy="5" rx="4" ry="5" fill="${color}" opacity="0.85" transform="rotate(288,10,10)"/>
+     <circle cx="10" cy="10" r="2" fill="#f9e4ee"/>
+   </svg>`;
+p.style.cssText = `
+     left:${Math.random()*100}%;
+     top:-30px;
+     animation-duration:${Math.random()*12+10}s;
+     animation-delay:${Math.random()*15}s;
+   `;
+container.appendChild(p);
+}
 </script>
 </body>
 </html>

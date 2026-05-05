@@ -181,11 +181,65 @@ color:#fff;letter-spacing:.05em;transition:background .25s;
 nav ul{gap:.8rem}
 .boba-cup-wrap{gap:1.5rem}
 }
+
+/* MUSIC PLAYER */
+#music-player{
+position:fixed;bottom:1.5rem;left:1.5rem;z-index:200;
+display:flex;align-items:center;gap:.65rem;
+background:rgba(255,248,240,.92);backdrop-filter:blur(10px);
+border:1.5px solid var(--teal);border-radius:999px;
+padding:.5rem .9rem .5rem .6rem;
+box-shadow:0 4px 18px rgba(0,0,0,.12);
+transition:box-shadow .2s;
+}
+#music-player:hover{box-shadow:0 6px 24px rgba(0,0,0,.18)}
+#music-toggle{
+width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;
+background:var(--teal);display:flex;align-items:center;justify-content:center;
+transition:background .2s,transform .15s;flex-shrink:0;
+}
+#music-toggle:hover{background:var(--teal-dark);transform:scale(1.08)}
+#music-toggle svg{width:16px;height:16px;fill:#fff}
+.music-info{display:flex;flex-direction:column;line-height:1.3}
+.music-label{font-family:'Poppins',sans-serif;font-weight:700;font-size:.72rem;color:var(--brown)}
+.music-sub{font-size:.65rem;color:#999}
+.music-bars{display:flex;align-items:flex-end;gap:2px;height:14px;margin-left:.2rem}
+.music-bars span{
+display:block;width:3px;background:var(--teal-dark);border-radius:2px;
+animation:barBounce .8s ease-in-out infinite;
+}
+.music-bars span:nth-child(1){height:6px;animation-delay:0s}
+.music-bars span:nth-child(2){height:12px;animation-delay:.15s}
+.music-bars span:nth-child(3){height:8px;animation-delay:.3s}
+.music-bars span:nth-child(4){height:14px;animation-delay:.1s}
+.music-bars.paused span{animation-play-state:paused}
+@keyframes barBounce{
+0%,100%{transform:scaleY(1)}
+50%{transform:scaleY(.4)}
+}
 </style>
 </head>
 <body>
 
 <div class="bubbles-bg" id="bubblesContainer"></div>
+
+<!-- MUSIC PLAYER -->
+<audio id="bg-music" loop>
+  <source src="https://stream.zeno.fm/fyn8eh3h5zquv" type="audio/mpeg"/>
+</audio>
+<div id="music-player">
+  <button id="music-toggle" aria-label="Play music" title="Toggle background music">
+    <svg id="icon-play" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="icon-pause" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
+  <div class="music-info">
+    <span class="music-label">☕ Lofi Vibes</span>
+    <span class="music-sub">background music</span>
+  </div>
+  <div class="music-bars paused" id="music-bars">
+    <span></span><span></span><span></span><span></span>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -340,7 +394,7 @@ nav ul{gap:.8rem}
 <div class="boba-art">
 <img src="https://fengchausa.com/wp-content/uploads/2025/08/Coffee-Milk-Tea.jpg" alt="Ube Caffe Latte"/>
 </div>
-<h3>Ube Caffe Latte</h3>
+<h3>Ube Caffe Latte with Boba</h3>
 <p>Features a house-made Ube milk blend with lactose-friendly milk and rich cold brew coffee — tropical meets caffeine fix!</p>
 </div>
 
@@ -553,6 +607,29 @@ p.style.cssText = `
    `;
 container.appendChild(p);
 }
+
+// Music player
+const audio = document.getElementById('bg-music');
+const toggle = document.getElementById('music-toggle');
+const iconPlay = document.getElementById('icon-play');
+const iconPause = document.getElementById('icon-pause');
+const bars = document.getElementById('music-bars');
+let playing = false;
+
+toggle.addEventListener('click', () => {
+  if (playing) {
+    audio.pause();
+    iconPlay.style.display = '';
+    iconPause.style.display = 'none';
+    bars.classList.add('paused');
+  } else {
+    audio.play().catch(() => {});
+    iconPlay.style.display = 'none';
+    iconPause.style.display = '';
+    bars.classList.remove('paused');
+  }
+  playing = !playing;
+});
 </script>
 </body>
 </html>
